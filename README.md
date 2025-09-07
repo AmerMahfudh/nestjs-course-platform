@@ -1,85 +1,114 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# NestJS E-Learning Platform
+![NestJS](https://img.shields.io/badge/NestJS-20232A?style=for-the-badge&logo=nestjs)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+A full-featured **NestJS** e-learning platform supporting courses, students, orders, payments via PayPal, email notifications, Cloudinary uploads, and multilingual support (English & Arabic).
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Features
 
-## Project setup
+- **Course Management**
+  - Add, update, and delete courses
+  - Add lectures to courses
+  - Filter courses by category, level, and language
+- **Student Management**
+  - Track purchased courses
+  - Monitor course progress per lecture
+  - Reset course progress
+- **Order & Payment**
+  - Create and capture orders via PayPal
+  - Track order status and payments
+- **Email Notifications**
+  - Verify user email
+  - Password reset emails
+- **File Uploads**
+  - Upload files/images via Cloudinary
+- **Multi-language Support**
+  - English & Arabic support across the application
+
+---
+
+## Tech Stack
+
+- **Backend:** [NestJS](https://nestjs.com/)
+- **Database:** MongoDB (via Mongoose)
+- **Authentication:** JWT + Role-based Guards
+- **Payments:** PayPal SDK
+- **Email:** Nodemailer + EJS templates
+- **File Uploads:** Cloudinary
+- **Others:** TypeScript, RxJS, Auto-Increment IDs
+
+---
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-$ pnpm install
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+
+
 ```
+# 2. Install dependencies
+npm install
 
-## Compile and run the project
+# 3. Create a .env file based on .env.example
+# Example .env configuration:
+PORT=3000
+DataBase_URL=<your_mongodb_connection_string>
+JWT_SECRET=<your_jwt_secret>
+PAYPAL_CLIENT_ID=<your_paypal_client_id>
+PAYPAL_CLIENT_SECRET=<your_paypal_client_secret>
+PAYPAL_BASE_API=<sandbox_or_live_paypal_url>
+CLOUDINARY_NAME=<your_cloud_name>
+CLOUDINARY_API_KEY=<your_cloudinary_api_key>
+CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
+MAIL_USER=<your_email>
+MAIL_PASS=<your_email_app_password>
+DOMAIN=<your_frontend_domain>
 
-```bash
-# development
-$ pnpm run start
+# 4. Run the application
+npm run start:dev
 
-# watch mode
-$ pnpm run start:dev
 
-# production mode
-$ pnpm run start:prod
-```
 
-## Run tests
 
-```bash
-# unit tests
-$ pnpm run test
+## API Documentation
 
-# e2e tests
-$ pnpm run test:e2e
+Swagger API is available at:  
+[http://localhost:3000/api](http://localhost:3000/api)
 
-# test coverage
-$ pnpm run test:cov
-```
+### Endpoints
 
-## Resources
+- **GET /api/course** - List all courses
+- **POST /student-course/check-purchase/:courseId** - Check if student purchased a course
+- **POST /order/create-order** - Create PayPal order
+- **POST /upload/upload** - Upload files to Cloudinary
 
-Check out a few resources that may come in handy when working with NestJS:
+Folder Structure
+src/
+├─ user/             # User management
+├─ course/           # Course & lecture management
+├─ student-course/   # Student courses & progress
+├─ course-progress/  # Lecture and course progress tracking
+├─ order/            # Orders & PayPal integration
+├─ Paypal/           # PayPal service
+├─ mail/             # Email notifications
+├─ cloudinary/       # Cloudinary uploads
+├─ db/               # Database connection
+└─ main.ts           # Entry point
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is licensed under the MIT License.
+
+## Author
+
+Amer Mahfudh – amer3.mahfudh@gmail.com
